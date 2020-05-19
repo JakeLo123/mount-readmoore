@@ -4,6 +4,8 @@
   "description": "reach the summit of becoming an avid reader!",
   "main": "server/index.js",
   "scripts": {
+    "start": "node server",
+    "dev": "nodemon server",
     "test": "mocha || true"
   },
   "author": "Jake Loew",

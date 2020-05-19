@@ -1,6 +1,6 @@
 ## app setup
 [x] - set up postgres
-[ ] - set up express
+[ ] - set up express / error handling / middlewares
 
 ## login
 [ ] animated modal
