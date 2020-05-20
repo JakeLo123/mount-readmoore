@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const path = require('path');
 // const { db } = require('./db');
 
 const middlewares = require('./middlewares');
@@ -10,13 +11,11 @@ const app = express();
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
-app.get('/', (req, res) => {
-  res.json({
-    message:
-      'welcome to Mount Readmoore where you reach the summit of becoming an avid reader 📚🐛🤓',
-  });
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '..', 'public/index.html'));
+// });
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
