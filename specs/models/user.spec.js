@@ -1,5 +1,4 @@
 const { expect } = require('chai');
-const Sequelize = require('sequelize');
 const { User, db } = require('../../server/db');
 
 describe('User', () => {
@@ -30,6 +29,21 @@ describe('User', () => {
           );
           done();
         });
+    });
+  });
+  describe('hasCorrectPassword', () => {
+    let jimmy;
+    beforeEach(async () => {
+      jimmy = await User.create({
+        username: 'jimmy',
+        password: 'saltyJimmy123',
+      });
+    });
+    it('should return true for a correct password', () => {
+      expect(jimmy.hasCorrectPassword('saltyJimmy123')).to.equal(true);
+    });
+    it('should return false for an incorrect password', () => {
+      expect(jimmy.hasCorrectPassword('incorrect_password')).to.equal(false);
     });
   });
 });

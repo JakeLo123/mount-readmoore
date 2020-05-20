@@ -13,10 +13,6 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '..', 'public/index.html'));
-// });
-
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
